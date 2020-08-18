@@ -17,7 +17,7 @@ public class Control {
 	
 	private final AtomicLong counter = new AtomicLong();
 	
-	@Value("propiedad.demo")
+	@Value("${propiedad.demo}")
 	private String ejemploPropiedad;
 
 	@GetMapping("/hello-world")
