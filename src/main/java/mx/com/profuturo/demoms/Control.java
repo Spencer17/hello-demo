@@ -12,16 +12,18 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class Control {
 
 	
-	@Value("propiedad.demo")
-	private static final String TEMPLATE = "Hello, %s!";
+	
+	private static final String TEMPLATE = "Hello, %s y la propiedad demo es %s !";
 	
 	private final AtomicLong counter = new AtomicLong();
 	
+	@Value("propiedad.demo")
+	private String ejemploPropiedad;
 
 	@GetMapping("/hello-world")
 	@ResponseBody
 	public Greeting sayHello(@RequestParam(name = "name", required = false, defaultValue = "Stranger") String name) {
-		return new Greeting(counter.incrementAndGet(), String.format(TEMPLATE, name));
+		return new Greeting(counter.incrementAndGet(), String.format(TEMPLATE, name, ejemploPropiedad));
 	}
 
 }
